@@ -116,7 +116,7 @@ Er zijn vier functies:
 - `naarLinks()`
 - `naarRechts()`
 
-▶▶▶ Zoek *Opdracht 5* in het bestand `snake.html` (let op, dit is een andere tab dan de voorgaande opdrachten).
+▶▶▶ Zoek *Opdracht 5* in het bestand `index.html` (let op, dit is een andere tab dan de voorgaande opdrachten).
 
 `<button ...>` is een knop waar je op kan klikken. Elke knop heeft een `id`, een technische naam. Elke knop heeft een `onclick=""`. Tussen de `"` in kan je invullen welke functie aangeroepen moet worden.
 
@@ -188,7 +188,7 @@ Mocht je er niet uitkomen, vraag dan een begeleider van de CoderDojo om hulp!
 
 ### Opdracht 9: Score bijhouden
 
-▶▶▶ Zet in het bestand `snake.html` een element waar de score getoond kan worden.
+▶▶▶ Zet in het bestand `index.html` een element waar de score getoond kan worden.
 
 ▶▶▶ Zorg ervoor dat elke keer dat de slang beweegt, dat de score `1` hoger wordt.
 
@@ -196,7 +196,7 @@ Mocht je er niet uitkomen, vraag dan een begeleider van de CoderDojo om hulp!
 
 ### Opdracht 10: High score bijhouden
 
-▶▶▶ Zet in het bestand `snake.html` een element waar de high score getoond kan worden.
+▶▶▶ Zet in het bestand `index.html` een element waar de high score getoond kan worden.
 
 ▶▶▶ Zorg ervoor dat elke keer wanneer het spel opnieuw wordt gestart, de high score wordt geüpdated met de hoogste score tot nu toe.
 
