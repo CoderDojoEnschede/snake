@@ -20,6 +20,8 @@ Als je aan de linker kant de code aanpast, dan verandert de website automatisch 
 
 Dat was gemakkelijk! Nu komt het echte werk!
 
+![](images/0.png)
+
 ### Opdracht 1: Teken de slang
 
 Op de website staat alleen het veld waar de slang gaat bewegen, en waar de appel komt te liggen. Maar we zien nog niets!
@@ -44,7 +46,7 @@ Dit is code. De code tekent een vierkant. De kleur van het vierkant wordt opgege
 
 Zie je de slang verschijnen op het scherm?
 
-![](images/TODO.png)
+![](images/1.png)
 
 ### Opdracht 2: Teken de appel
 
@@ -59,6 +61,8 @@ De appel heet `appel` in de code. De appel heeft een locatie `x` (horizontaal) e
 Kijk naar de vorige opdracht als je er niet uit komt hoe je een vierkant kan tekenen.
 
 De appel moet nu op het scherm verschijnen. Elke keer dat het spel opstart, begint de appel op een andere willekeurige locatie.
+
+![](images/2.png)
 
 ### Opdracht 3: Glibberen
 

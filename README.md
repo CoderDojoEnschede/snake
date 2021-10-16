@@ -8,7 +8,7 @@ Eenvoudige Snake voor Coderdojo Enschede
 
 Instructies staan in [Instructies.md](Instructies.md).
 
-De Trinket is te vinden op []. De Trinket code staat in de Git branch [trinket](https://github.com/CoderDojoEnschede/snake/tree/trinket).
+De Trinket is te vinden op https://trinket.io/embed/html/841e7df535. De Trinket code staat in de Git branch [trinket](https://github.com/CoderDojoEnschede/snake/tree/trinket).
 
 ### Licentie
 
