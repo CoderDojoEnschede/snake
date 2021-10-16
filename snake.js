@@ -1,4 +1,6 @@
+// Op een canvas kan je tekenen
 const canvas = document.getElementById('spel');
+// De maten van het canvas
 const bcr = canvas.getBoundingClientRect();
 
 const rasterGrootte = 16;
@@ -10,51 +12,72 @@ const aantalVerticaleCellen = hoogte / rasterGrootte;
 canvas.width = breedte; // Dit zorgt ervoor dat de canvas de correct hoogte en breedte krijgt.
 canvas.height = hoogte;
 
+// Het veld waar we op kunnen tekenen
 const tekenVeld = canvas.getContext('2d');
 
-const snake = {};
-initialiseerSpel();
-
-function initialiseerSpel() {
-    snake.x = 5 * rasterGrootte;
-    snake.y = 5 * rasterGrootte;
-    // Snelheid van de slang. Beweegt elke keer 1 rasterGrootte lengte one rasterGrootte length every frame in either the x or y direction
-    snake.horizontaleSnelheid = rasterGrootte;
-    snake.verticaleSnelheid = 0;
-    // Houdt bij waar alle onderdelen van het slangenlichaam zich bevinden
-    snake.slangCellen = [];
-    // lengte van de slang. Neemt toe wanneer een appel gegeten wordt.
-    snake.aantalCellen = 4;
-}
-
-const appel = {};
-plaatsAppel();
+// De locatie van de appel
+let appel = maakWillekeurigeAppel();
+let snake = maakNieuweSlang();
 
 // Pak willekeurige hele nummers in een specifiek bereik
 // @see https://stackoverflow.com/a/1527820/2124254
-function getRandomInt(min, max) {
+function maakWillekeurigGetal(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function tekenRaster() {
-    tekenVeld.clearRect(0, 0, breedte, hoogte);
-    tekenVeld.fillStyle = '#333333';
+function maakNieuweSlang() {
+    return {
+        // Locatie van de voorkant van de slang
+        x: 5 * rasterGrootte,
+        y: 5 * rasterGrootte,
 
+        // Snelheid van de slang. Beweegt elke keer 1 rasterGrootte lengte in de x- of y-richting.
+        horizontaleSnelheid: rasterGrootte,
+        verticaleSnelheid: 0,
+
+        // Houdt bij waar alle onderdelen van het slangenlichaam zich bevinden
+        slangCellen: [],
+
+        // lengte van de slang. Neemt toe wanneer een appel gegeten wordt.
+        aantalCellen: 4,
+    };
+}
+
+function maakWillekeurigeAppel() {
+    return {
+        x: maakWillekeurigGetal(0, aantalHorizontaleCellen) * rasterGrootte,
+        y: maakWillekeurigGetal(0, aantalVerticaleCellen) * rasterGrootte,
+    };
+}
+
+function maakVeldLeeg() {
+    tekenVeld.clearRect(0, 0, breedte, hoogte);
+
+}
+
+function tekenVierkant(kleur, x, y, breedte, hoogte) {
+    tekenVeld.fillStyle = kleur;
+    tekenVeld.fillRect(x, y, breedte, hoogte);
+}
+
+function tekenRaster() {
+    maakVeldLeeg();
+
+    const kleur = '#333333';
     for (let y = 0; y < aantalVerticaleCellen; y++) {
         const verticaal = y * rasterGrootte - 1;
-        tekenVeld.fillRect(0, verticaal, breedte, 1);
+        tekenVierkant(kleur, 0, verticaal, breedte, 1);
         for (let x = 0; x < aantalHorizontaleCellen; x++) {
-            tekenVeld.fillRect(x * rasterGrootte - 1, verticaal + 1, 1, rasterGrootte - 1);
+            tekenVierkant(kleur, x * rasterGrootte - 1, verticaal + 1, 1, rasterGrootte - 1);
         }
     }
 }
 
 function beweegSlang() {
 
-    // beweeg de slang met behulp van de snelheid velocity
+    // Beweeg de slang met behulp van de snelheid
     snake.x += snake.horizontaleSnelheid;
     snake.y += snake.verticaleSnelheid;
-
 
     // Zorg ervoor dat de slang bijv. links is, dat de slang rechts verder gaat.
     if (snake.x < 0) {
@@ -80,47 +103,43 @@ function beweegSlang() {
 
 }
 
-function plaatsAppel() {
-    appel.x = getRandomInt(0, aantalHorizontaleCellen) * rasterGrootte;
-    appel.y = getRandomInt(0, aantalVerticaleCellen) * rasterGrootte;
-}
-
-function verwerkSlangenCell(cell, index) {
+function verwerkSlangenCell(cell, index, kleur) {
 
     // 1 pixel kleiner tekenen dan de rasterGrootte zorgt ervoor dat het lichaam van de slang duidelijk zichtbaar is en je direct de lengte kunt zien
-    tekenVeld.fillRect(cell.x, cell.y, rasterGrootte - 1, rasterGrootte - 1);
+    tekenVierkant(kleur, cell.x, cell.y, rasterGrootte - 1, rasterGrootte - 1);
 
     // De slang heeft de appel opgegeten
     if (cell.x === appel.x && cell.y === appel.y) {
         snake.aantalCellen++;
-        plaatsAppel();
+        appel = maakWillekeurigeAppel();
     }
 
     // Controleer botsing met alle cellen na de huidige cell (Aangepast bubble sort (https://nl.wikipedia.org/wiki/Bubblesort))
     for (let i = index + 1; i < snake.slangCellen.length; i++) {
 
-        // De huidige cell bevindt zich op dezelfde plek als een andere cell, dit betekent een botsing. We gaan het spel opnieuw beginnen.
+        // De huidige cell bevindt zich op dezelfde plek als een andere cell, dit betekent een botsing.
+        // We gaan het spel opnieuw beginnen.
         if (cell.x === snake.slangCellen[i].x && cell.y === snake.slangCellen[i].y) {
-            initialiseerSpel();
-            plaatsAppel();
+            snake = maakNieuweSlang();
+            appel = maakWillekeurigeAppel();
         }
     }
 }
 
-// spel Lus
+// Spel lus
 function spelLus() {
 
     tekenRaster();
 
     beweegSlang();
 
-    // teken appel
-    tekenVeld.fillStyle = 'red';
-    tekenVeld.fillRect(appel.x, appel.y, rasterGrootte - 1, rasterGrootte - 1);
+    // Teken appel
+    tekenVierkant('red', appel.x, appel.y, rasterGrootte - 1, rasterGrootte - 1);
 
-    // teken de slangen cellen
-    tekenVeld.fillStyle = 'green';
-    snake.slangCellen.forEach(verwerkSlangenCell);
+    // Teken de slangen cellen
+    for (let i = 0; i < snake.slangCellen.length; i++) {
+        verwerkSlangenCell(snake.slangCellen[i], i, 'green')
+    }
 }
 
 function naarLinks() {
@@ -158,20 +177,19 @@ function naarRechts() {
 // Luister naar het toetsenbord om de slang te kunnen bewegen
 document.addEventListener('keydown', function (e) {
 
-
-    // left arrow key
+    // Pijltje links
     if (e.which === 37) {
         naarLinks();
     }
-    // up arrow key
+    // Pijltje omhoog
     else if (e.which === 38) {
         naarBoven();
     }
-    // right arrow key
+    // Pijltje rechts
     else if (e.which === 39) {
         naarRechts();
     }
-    // down arrow key
+    // Pijltje beneden
     else if (e.which === 40) {
         naarBeneden();
     }
@@ -182,10 +200,12 @@ let aantalAanroepen = 0;
 
 function beperkAantalVerversingen() {
     requestAnimationFrame(beperkAantalVerversingen);
+
     // maak het spel iets langzamer (7.5 beelden per seconde) inplaats van de standaard 60 (60/7.5 = 8)
     if (++aantalAanroepen < 8) {
         return;
     }
+
     aantalAanroepen = 0;
     spelLus();
 }
