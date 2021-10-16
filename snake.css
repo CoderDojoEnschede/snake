@@ -33,7 +33,6 @@ canvas {
 
 .besturing {
     flex: 0 0 22%;
-    border: 1px solid white;
     display: flex;
     justify-content: space-between;
 }
