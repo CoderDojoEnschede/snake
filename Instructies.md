@@ -164,7 +164,7 @@ Nu wordt de slang langer als hij een appel heeft opgegeten. Maar de appel blijft
 
 Elke keer als de slang een appel eet, zal de appel nu verplaatsen naar een andere locatie.
 
-### Opdracht 7: Kleurtjes
+### Opdracht 8: Kleurtjes
 
 De slang is vol van alle appels en we kunnen ons nu bezig houden met andere zaken zoals hoe het spel eruit ziet.
 
@@ -182,11 +182,11 @@ De volgende opdrachten zijn moeilijker dan de opdrachten hierboven. Je moet zelf
 
 Mocht je er niet uitkomen, vraag dan een begeleider van de CoderDojo om hulp!
 
-### Opdracht 8: Dodelijke rand
+### Opdracht 9: Dodelijke rand
 
 ▶▶▶ Zorg ervoor dat het spel herstart als de slang bij een rand komt, in plaats van dat de slang er doorheen gaat.
 
-### Opdracht 9: Score bijhouden
+### Opdracht 10: Score bijhouden
 
 ▶▶▶ Zet in het bestand `index.html` een element waar de score getoond kan worden.
 
@@ -194,13 +194,13 @@ Mocht je er niet uitkomen, vraag dan een begeleider van de CoderDojo om hulp!
 
 ▶▶▶ Zorg ervoor dat elke keer dat de slang een appel eet, dat de score `10` hoger wordt.
 
-### Opdracht 10: High score bijhouden
+### Opdracht 11: High score bijhouden
 
 ▶▶▶ Zet in het bestand `index.html` een element waar de high score getoond kan worden.
 
 ▶▶▶ Zorg ervoor dat elke keer wanneer het spel opnieuw wordt gestart, de high score wordt geüpdated met de hoogste score tot nu toe.
 
-### Opdracht 11: Barrières
+### Opdracht 12: Barrières
 
 ▶▶▶ Maak een variabele waarin een lijst van locaties (`x` en `y`) van blokjes staan die barrières zijn.
 
@@ -208,11 +208,11 @@ Mocht je er niet uitkomen, vraag dan een begeleider van de CoderDojo om hulp!
 
 ▶▶▶ Zorg ervoor dat een appel niet op een plek van een barrière kan verschijnen.
 
-### Opdracht 12: Bericht als het spel klaar is
+### Opdracht 13: Bericht als het spel klaar is
 
 ▶▶▶ Zorg ervoor dat er een mooi bericht in beeld verschijnt als het spel klaar is, met de score en de lengte van de slang.
 
-### Opdracht 13: Fruit en vlees
+### Opdracht 14: Fruit en vlees
 
 Behalve appels, houden slangen ook erg van bananen, muizen, uien en spruitjes.
 
@@ -222,13 +222,13 @@ Behalve appels, houden slangen ook erg van bananen, muizen, uien en spruitjes.
 
 ▶▶▶ Geef voor elk stuk eten een andere score.
 
-### Opdracht 14: Willekeurige startlocatie
+### Opdracht 15: Willekeurige startlocatie
 
 De slang begint altijd linksboven in de hoek.
 
 ▶▶▶ Zorg ervoor dat de slang op een willekeurige locatie begint, maar wel met zijn staart volledig in het veld. Let op bij de rand!
 
-### Opdracht 15: Sneller
+### Opdracht 16: Sneller
 
 De slang glijdt altijd met dezelfde snelheid. Het is leuker als de slang steeds sneller gaat naar mate de slang langer is. Dan wordt het spel nog moeilijker.
 
