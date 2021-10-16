@@ -36,7 +36,12 @@ function maakNieuweSlang() {
         verticaleSnelheid: 0,
 
         // Houdt bij waar alle onderdelen van het slangenlichaam zich bevinden
-        slangCellen: [],
+        slangCellen: [
+            {x: 5 * rasterGrootte, y: 5 * rasterGrootte},
+            {x: 4 * rasterGrootte, y: 5 * rasterGrootte},
+            {x: 3 * rasterGrootte, y: 5 * rasterGrootte},
+            {x: 2 * rasterGrootte, y: 5 * rasterGrootte},
+        ],
 
         // lengte van de slang. Neemt toe wanneer een appel gegeten wordt.
         aantalCellen: 4,
@@ -75,15 +80,30 @@ function tekenRaster() {
 
 function beweegSlang() {
 
+    // ▼▼▼ Opdracht 3 ▼▼▼ //
+
     // Beweeg de slang met behulp van de snelheid
     snake.x += snake.horizontaleSnelheid;
     snake.y += snake.verticaleSnelheid;
 
+    // ▲▲▲ Opdracht 3 ▲▲▲ //
+
     // Zorg ervoor dat de slang bijv. links is, dat de slang rechts verder gaat.
     if (snake.x < 0) {
+
+        // ▼▼▼ Opdracht 4a ▼▼▼ //
+
         snake.x = breedte - rasterGrootte;
+
+        // ▲▲▲ Opdracht 4a ▲▲▲ //
+
     } else if (snake.x >= breedte) {
+
+        // ▼▼▼ Opdracht 4b ▼▼▼ //
+
         snake.x = 0;
+
+        // ▲▲▲ Opdracht 4b ▲▲▲ //
     }
 
     // Zorg ervoor dat de slang bijv. bovenaan is, dat de slang beneden verder gaat.
@@ -94,7 +114,9 @@ function beweegSlang() {
     }
 
     // Houdt bij waar de slang is geweest. De eerste cell is altijd het hoofd van de slang
-    snake.slangCellen.unshift({x: snake.x, y: snake.y});
+    if (snake.slangCellen[0].x !== snake.x || snake.slangCellen[0].y !== snake.y) {
+        snake.slangCellen.unshift({x: snake.x, y: snake.y});
+    }
 
     // Verwijder cellen als we bewegen
     if (snake.slangCellen.length > snake.aantalCellen) {
@@ -103,10 +125,14 @@ function beweegSlang() {
 
 }
 
-function verwerkSlangenCell(cell, index, kleur) {
+function verwerkSlangenCell(cell, index) {
+
+    // ▼▼▼ Opdracht 1 ▼▼▼ //
 
     // 1 pixel kleiner tekenen dan de rasterGrootte zorgt ervoor dat het lichaam van de slang duidelijk zichtbaar is en je direct de lengte kunt zien
-    tekenVierkant(kleur, cell.x, cell.y, rasterGrootte - 1, rasterGrootte - 1);
+    tekenVierkant('green', cell.x, cell.y, rasterGrootte - 1, rasterGrootte - 1);
+
+    // ▲▲▲ Opdracht 1 ▲▲▲ //
 
     // De slang heeft de appel opgegeten
     if (cell.x === appel.x && cell.y === appel.y) {
@@ -133,12 +159,16 @@ function spelLus() {
 
     beweegSlang();
 
+    // ▼▼▼ Opdracht 2 ▼▼▼ //
+
     // Teken appel
     tekenVierkant('red', appel.x, appel.y, rasterGrootte - 1, rasterGrootte - 1);
 
+    // ▲▲▲ Opdracht 2 ▲▲▲ //
+
     // Teken de slangen cellen
     for (let i = 0; i < snake.slangCellen.length; i++) {
-        verwerkSlangenCell(snake.slangCellen[i], i, 'green')
+        verwerkSlangenCell(snake.slangCellen[i], i)
     }
 }
 
