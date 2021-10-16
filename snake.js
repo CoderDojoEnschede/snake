@@ -81,8 +81,7 @@ function beweegSlang() {
     // ▼▼▼ Opdracht 3 ▼▼▼ //
 
     // Beweeg de slang met behulp van de snelheid
-    snake.x += snake.horizontaleSnelheid;
-    snake.y += snake.verticaleSnelheid;
+
 
     // ▲▲▲ Opdracht 3 ▲▲▲ //
 
@@ -91,7 +90,7 @@ function beweegSlang() {
 
         // ▼▼▼ Opdracht 4a ▼▼▼ //
 
-        snake.x = breedte - rasterGrootte;
+
 
         // ▲▲▲ Opdracht 4a ▲▲▲ //
 
@@ -99,7 +98,7 @@ function beweegSlang() {
 
         // ▼▼▼ Opdracht 4b ▼▼▼ //
 
-        snake.x = 0;
+
 
         // ▲▲▲ Opdracht 4b ▲▲▲ //
     }
@@ -128,7 +127,7 @@ function verwerkSlangenCell(cell, index) {
     // ▼▼▼ Opdracht 1 ▼▼▼ //
 
     // 1 pixel kleiner tekenen dan de rasterGrootte zorgt ervoor dat het lichaam van de slang duidelijk zichtbaar is en je direct de lengte kunt zien
-    tekenVierkant('green', cell.x, cell.y, rasterGrootte - 1, rasterGrootte - 1);
+
 
     // ▲▲▲ Opdracht 1 ▲▲▲ //
 
@@ -154,7 +153,7 @@ function spelLus() {
     // ▼▼▼ Opdracht 2 ▼▼▼ //
 
     // Teken appel
-    tekenVierkant('red', appel.x, appel.y, rasterGrootte - 1, rasterGrootte - 1);
+
 
     // ▲▲▲ Opdracht 2 ▲▲▲ //
 
@@ -163,8 +162,7 @@ function spelLus() {
 
         // ▼▼▼ Opdracht 7 ▼▼▼ //
 
-        snake.aantalCellen++;
-        verplaatsAppelWillekeurig();
+
 
         // ▲▲▲ Opdracht 7 ▲▲▲ //
 
@@ -217,22 +215,22 @@ document.addEventListener('keydown', e => {
 
     // Pijltje links
     if (toetsCode === 37) {
-        naarLinks();
+
     }
 
     // Pijltje omhoog
     if (toetsCode === 38) {
-        naarBoven();
+
     }
 
     // Pijltje rechts
     if (toetsCode === 39) {
-        naarRechts();
+
     }
 
     // Pijltje beneden
     if (toetsCode === 40) {
-        naarBeneden();
+
     }
 
     // ▲▲▲ Opdracht 6 ▲▲▲ //
