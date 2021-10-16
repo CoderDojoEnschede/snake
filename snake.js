@@ -16,8 +16,10 @@ canvas.height = hoogte;
 const tekenVeld = canvas.getContext('2d');
 
 // De locatie van de appel
-let appel = maakWillekeurigeAppel();
-let snake = maakNieuweSlang();
+const appel = {};
+verplaatsAppelWillekeurig();
+const snake = {};
+maakNieuweSlang();
 
 // Pak willekeurige hele nummers in een specifiek bereik
 // @see https://stackoverflow.com/a/1527820/2124254
@@ -26,33 +28,29 @@ function maakWillekeurigGetal(min, max) {
 }
 
 function maakNieuweSlang() {
-    return {
-        // Locatie van de voorkant van de slang
-        x: 5 * rasterGrootte,
-        y: 5 * rasterGrootte,
+    // Locatie van de voorkant van de slang
+    snake.x = 5 * rasterGrootte;
+    snake.y = 5 * rasterGrootte;
 
-        // Snelheid van de slang. Beweegt elke keer 1 rasterGrootte lengte in de x- of y-richting.
-        horizontaleSnelheid: rasterGrootte,
-        verticaleSnelheid: 0,
+    // Snelheid van de slang. Beweegt elke keer 1 rasterGrootte lengte in de x- of y-richting.
+    snake.horizontaleSnelheid = rasterGrootte;
+    snake.verticaleSnelheid = 0;
 
-        // Houdt bij waar alle onderdelen van het slangenlichaam zich bevinden
-        slangCellen: [
-            {x: 5 * rasterGrootte, y: 5 * rasterGrootte},
-            {x: 4 * rasterGrootte, y: 5 * rasterGrootte},
-            {x: 3 * rasterGrootte, y: 5 * rasterGrootte},
-            {x: 2 * rasterGrootte, y: 5 * rasterGrootte},
-        ],
+    // Houdt bij waar alle onderdelen van het slangenlichaam zich bevinden
+    snake.slangCellen = [
+        {x: 5 * rasterGrootte, y: 5 * rasterGrootte},
+        {x: 4 * rasterGrootte, y: 5 * rasterGrootte},
+        {x: 3 * rasterGrootte, y: 5 * rasterGrootte},
+        {x: 2 * rasterGrootte, y: 5 * rasterGrootte},
+    ];
 
-        // lengte van de slang. Neemt toe wanneer een appel gegeten wordt.
-        aantalCellen: 4,
-    };
+    // Lengte van de slang. Neemt toe wanneer een appel gegeten wordt.
+    snake.aantalCellen = 4;
 }
 
-function maakWillekeurigeAppel() {
-    return {
-        x: maakWillekeurigGetal(0, aantalHorizontaleCellen) * rasterGrootte,
-        y: maakWillekeurigGetal(0, aantalVerticaleCellen) * rasterGrootte,
-    };
+function verplaatsAppelWillekeurig() {
+    appel.x = maakWillekeurigGetal(0, aantalHorizontaleCellen) * rasterGrootte;
+    appel.y = maakWillekeurigGetal(0, aantalVerticaleCellen) * rasterGrootte;
 }
 
 function maakVeldLeeg() {
@@ -134,20 +132,14 @@ function verwerkSlangenCell(cell, index) {
 
     // ▲▲▲ Opdracht 1 ▲▲▲ //
 
-    // De slang heeft de appel opgegeten
-    if (cell.x === appel.x && cell.y === appel.y) {
-        snake.aantalCellen++;
-        appel = maakWillekeurigeAppel();
-    }
-
     // Controleer botsing met alle cellen na de huidige cell (Aangepast bubble sort (https://nl.wikipedia.org/wiki/Bubblesort))
     for (let i = index + 1; i < snake.slangCellen.length; i++) {
 
         // De huidige cell bevindt zich op dezelfde plek als een andere cell, dit betekent een botsing.
         // We gaan het spel opnieuw beginnen.
         if (cell.x === snake.slangCellen[i].x && cell.y === snake.slangCellen[i].y) {
-            snake = maakNieuweSlang();
-            appel = maakWillekeurigeAppel();
+            maakNieuweSlang();
+            verplaatsAppelWillekeurig();
         }
     }
 }
@@ -165,6 +157,18 @@ function spelLus() {
     tekenVierkant('red', appel.x, appel.y, rasterGrootte - 1, rasterGrootte - 1);
 
     // ▲▲▲ Opdracht 2 ▲▲▲ //
+
+    // De slang eet de appel
+    if (snake.x === appel.x && snake.y === appel.y) {
+
+        // ▼▼▼ Opdracht 7 ▼▼▼ //
+
+        snake.aantalCellen++;
+        verplaatsAppelWillekeurig();
+
+        // ▲▲▲ Opdracht 7 ▲▲▲ //
+
+    }
 
     // Teken de slangen cellen
     for (let i = 0; i < snake.slangCellen.length; i++) {
@@ -205,24 +209,34 @@ function naarRechts() {
 }
 
 // Luister naar het toetsenbord om de slang te kunnen bewegen
-document.addEventListener('keydown', function (e) {
+document.addEventListener('keydown', e => {
+
+    const toetsCode = e.which;
+
+    // ▼▼▼ Opdracht 6 ▼▼▼ //
 
     // Pijltje links
-    if (e.which === 37) {
+    if (toetsCode === 37) {
         naarLinks();
     }
+
     // Pijltje omhoog
-    else if (e.which === 38) {
+    if (toetsCode === 38) {
         naarBoven();
     }
+
     // Pijltje rechts
-    else if (e.which === 39) {
+    if (toetsCode === 39) {
         naarRechts();
     }
+
     // Pijltje beneden
-    else if (e.which === 40) {
+    if (toetsCode === 40) {
         naarBeneden();
     }
+
+    // ▲▲▲ Opdracht 6 ▲▲▲ //
+
 });
 
 

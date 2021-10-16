@@ -86,32 +86,148 @@ Kijk eens goed wat er gebeurt als de slang aan de rechterkant van het veld is.
 
 De slang gaat door de muur, en verwijnt! Dat klopt niet.
 
-▶▶▶ Zoek *Opdracht 4* in het bestand `snake.js`.
+▶▶▶ Zoek *Opdracht 4a* in het bestand `snake.js`.
 
-### TODO
+Deze code staat in `if (snake.x < 0)`, dus als de slang links van het scherm af valt. Dan moet de slang aan de rechterkant er weer uit komen.
 
-- laat de slang bewegen
-- laat de slang door de muur gaan
-- bestuur de slang met de knoppen
-- bestuur de slang met het toetsenbord
-- laat de slang het eten opeten
-- kleurtjes
+▶▶▶ Zet de `x` positie van de slang op `breedte - rasterGrootte`.
 
+▶▶▶ Zoek *Opdracht 4b* in het bestand `snake.js`.
+
+Deze code staat in `if (snake.x >= breedte)`, dus als de slang rechts van het scherm af valt. Dan moet de slang aan de linkerkant er weer uit komen.
+
+▶▶▶ Zet de `x` positie van de slang op `0`.
+
+Nu moet de slang succesvol 'door de muur' heen glijden.
+
+### Opdracht 5: Besturen met de knoppen
+
+De slang gaat alleen nog maar rechtdoor. Met de knoppen die op het scherm staan, gaan we de slang besturen.
+
+We besturen de slang door te zeggen wat er moet gebeuren als je op de knop klikt. Bijvoorbeeld als je op de knop naar rechts klikt, dan moet een *functie* worden aangeroepen die ervoor zorgt dat de slang naar rechts gaat.
+
+Er zijn vier functies:
+- `naarBoven()`
+- `naarBeneden()`
+- `naarLinks()`
+- `naarRechts()`
+
+▶▶▶ Zoek *Opdracht 5* in het bestand `snake.html` (let op, dit is een andere tab dan de voorgaande opdrachten).
+
+`<button ...>` is een knop waar je op kan klikken. Elke knop heeft een `id`, een technische naam. Elke knop heeft een `onclick=""`. Tussen de `"` in kan je invullen welke functie aangeroepen moet worden.
+
+▶▶▶ Zorg dat de knop `links` de functie `naarLinks()` aanroept door het in `onclick` in te vullen.
+
+▶▶▶ Zorg dat de knoppen `boven`, `beneden` en `rechts` ook de correcte functies aanroepen.
+
+Je moet nu met behulp van de knoppen de slang kunnen besturen. De slang kan niet omkeren, hij kan alleen bochtjes om.
+
+### Opdracht 6: Besturen met het toetsenbord
+
+Met de muis op de knoppen klikken is leuk, maar niet zo handig voor een snel spelletje als Snake.
+
+We gaan het toetsenbord gebruiken om de slang te besturen.
+
+▶▶▶ Zoek *Opdracht 6* in het bestand `snake.js`.
+
+Er staat vier keer een `if (toetsCode === ...)` met een code. Elke toets op je toetsenbord heeft een code. Wij hebben de codes alvast ingevuld.
+
+Kijk naar het commentaar (tekst dat begint met `//`) boven elke `if`. Die vertelt welke code bij welke pijltjestoets hoort.
+
+▶▶▶ Vul voor elke `if` een functie in die de slang in de goede richting stuurt, net als in opdracht 5.
+
+Probeer maar om met je toetsenbord de slang te besturen.
+
+### Opdracht 7: Honger
+
+Inmiddels kan de slang bewegen over het veld, en kunnen we de slang op twee manieren besturen.
+
+De slang heeft honger! Op het veld ligt een appel.
+
+▶▶▶ Probeer met de slang de appel te eten.
+
+Er gebeurt niets, de slang eet de appel niet en glijdt er pal overheen.
+
+▶▶▶ Zoek *Opdracht 7* in het bestand `snake.js`.
+
+De slang weet hoe lang hij is. De lengte van de slang is opgeslagen in `snake.aantalCellen`. Als de slang een appel heeft gegeten, dan wordt hij een blokje langer.
+
+▶▶▶ Verhoog de waarde van `snake.aantalCellen` met `1` als de slang een appel eet.
+
+Nu wordt de slang langer als hij een appel heeft opgegeten. Maar de appel blijft op dezelfde plek liggen. Het is zo wel erg makkelijk om de appel opnieuw te eten. We gaan de appel verplaatsen naar een willekeurige andere locatie.
+
+▶▶▶ Maak een willekeurige nieuwe appel met `verplaatsAppelWillekeurig()`.
+
+Elke keer als de slang een appel eet, zal de appel nu verplaatsen naar een andere locatie.
+
+### Opdracht 7: Kleurtjes
+
+De slang is vol van alle appels en we kunnen ons nu bezig houden met andere zaken zoals hoe het spel eruit ziet.
+
+Op een aantal plekken in de code wordt de functie `tekenVierkant` aangeroepen. Daar wordt een kleur meegegeven om aan te geven welke kleur het vierkant getekend moet worden.
+
+In de code staat opdracht 8 niet aangegeven met commentaar. Je moet zelf zoeken naar de locaties waar `tekenVierkant` wordt aangeroepen.
+
+▶▶▶ Open in een nieuw tabblad de website https://htmlcolorcodes.com/color-names/. Zoek een aantal leuke kleuren uit.
+
+▶▶▶ Verander de kleuren van de slang, de appel en van het grijze raster van het veld.
 
 ## Extra opdrachten voor gevorderden
 
-De opdrachten hieronder zijn moeilijker dan de opdrachten tot nu toe. Je moet zelf code kunnen begrijpen en typen om de opdrachten te kunnen voltooien.
+De volgende opdrachten zijn moeilijker dan de opdrachten hierboven. Je moet zelf code kunnen begrijpen en typen om de opdrachten te kunnen voltooien.
 
 Mocht je er niet uitkomen, vraag dan een begeleider van de CoderDojo om hulp!
 
-### TODO
+### Opdracht 8: Dodelijke rand
 
-- snelheid configurabel maken
-- opvullen van barrieres
-- rand is dodelijk
-- score (tijd?)
-- high score
-  - localstorage for persistence
-- bericht in beeld als je af gaat
-- meerdere stukjes eten
-- laat slang op willekeurige plek beginnen
+▶▶▶ Zorg ervoor dat het spel herstart als de slang bij een rand komt, in plaats van dat de slang er doorheen gaat.
+
+### Opdracht 9: Score bijhouden
+
+▶▶▶ Zet in het bestand `snake.html` een element waar de score getoond kan worden.
+
+▶▶▶ Zorg ervoor dat elke keer dat de slang beweegt, dat de score `1` hoger wordt.
+
+▶▶▶ Zorg ervoor dat elke keer dat de slang een appel eet, dat de score `10` hoger wordt.
+
+### Opdracht 10: High score bijhouden
+
+▶▶▶ Zet in het bestand `snake.html` een element waar de high score getoond kan worden.
+
+▶▶▶ Zorg ervoor dat elke keer wanneer het spel opnieuw wordt gestart, de high score wordt geüpdated met de hoogste score tot nu toe.
+
+### Opdracht 11: Barrières
+
+▶▶▶ Maak een variabele waarin een lijst van locaties (`x` en `y`) van blokjes staan die barrières zijn.
+
+▶▶▶ Zorg ervoor dat het spel stopt wanneer de slang op een barrière beweegt.
+
+▶▶▶ Zorg ervoor dat een appel niet op een plek van een barrière kan verschijnen.
+
+### Opdracht 12: Bericht als het spel klaar is
+
+▶▶▶ Zorg ervoor dat er een mooi bericht in beeld verschijnt als het spel klaar is, met de score en de lengte van de slang.
+
+### Opdracht 13: Fruit en vlees
+
+Behalve appels, houden slangen ook erg van bananen, muizen, uien en spruitjes.
+
+▶▶▶ Zorg ervoor dat er meerdere stukken eten in het veld liggen.
+
+▶▶▶ Zorg ervoor dat de stukken eten niet op dezelfde plek verschijnen op het veld.
+
+▶▶▶ Geef voor elk stuk eten een andere score.
+
+### Opdracht 14: Willekeurige startlocatie
+
+De slang begint altijd linksboven in de hoek.
+
+▶▶▶ Zorg ervoor dat de slang op een willekeurige locatie begint, maar wel met zijn staart volledig in het veld. Let op bij de rand!
+
+### Opdracht 15: Sneller
+
+De slang glijdt altijd met dezelfde snelheid. Het is leuker als de slang steeds sneller gaat naar mate de slang langer is. Dan wordt het spel nog moeilijker.
+
+▶▶▶ Zorg evoor dat de slang sneller gaat glijden zodra de slang een appel heeft gegeten.
+
+▶▶▶ Maak de beginsnelheid van de slang configurabel met een variabele, zodat je met een langzamere of snellere slang het spel kan beginnen.
