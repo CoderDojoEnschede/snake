@@ -4,78 +4,7 @@
     <title>Basic Snake HTML Game</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        html, body {
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background: black;
-            min-width: 260px;
-            min-height: 320px;
-        }
-
-        .container {
-            width: 100%;
-            height: 100%;
-            padding: 5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-
-        canvas {
-            flex: 0 0 75%;
-            border: 1px solid white;
-        }
-
-        .besturing {
-            flex: 0 0 22%;
-            border: 1px solid white;
-            display: flex;
-            justify-content: space-between;
-        }
-        .besturing button{
-            font-size: 2rem;
-        }
-        .besturing > * {
-            flex: 0 0 30%;
-        }
-
-        .besturing > .bovenBeneden {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .besturing > .bovenBeneden > button {
-            flex: 0 0 45%;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 1rem;
-            }
-        }
-
-        @media (max-height: 600px) {
-            .besturing button{
-                font-size: 1rem;
-            }
-
-            .container {
-                padding: 1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="snake.css">
 </head>
 <body onselectstart="return false" onDrag="return false" onDrop="return false">
 <div class="container">
