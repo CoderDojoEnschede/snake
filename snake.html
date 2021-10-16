@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="nl">
-<head>
-    <title>Basic Snake HTML Game</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="snake.css">
-</head>
-<body onselectstart="return false" onDrag="return false" onDrop="return false">
-<div class="container">
-    <canvas id="spel"></canvas>
-    <div class="besturing">
-        <button id="links" onclick="naarLinks()">&larr;</button>
-        <div class="bovenBeneden">
-            <button id="boven" onclick="naarBoven()">&uarr;</button>
-            <button id="beneden" onclick="naarBeneden()">&darr;</button>
+    <head>
+        <title>Snake</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="snake.css">
+    </head>
+    <body onselectstart="return false" onDrag="return false" onDrop="return false">
+        <div class="container">
+            <canvas id="spel"></canvas>
+            <div class="besturing">
+                <button id="links" onclick="naarLinks()">&larr;</button>
+                <div class="bovenBeneden">
+                    <button id="boven" onclick="naarBoven()">&uarr;</button>
+                    <button id="beneden" onclick="naarBeneden()">&darr;</button>
+                </div>
+                <button id="rechts" onclick="naarRechts()">&rarr;</button>
+            </div>
         </div>
-        <button id="rechts" onclick="naarRechts()">&rarr;</button>
-    </div>
-</div>
-<script src="snake.js"></script>
-</body>
+        <script src="snake.js"></script>
+    </body>
 </html>
