@@ -48,6 +48,8 @@ Zie je de slang verschijnen op het scherm?
 
 ![](images/1.png)
 
+*Voor de gevorderden: uitleg over coördinaten*. Het speelveld heeft `aantalHorizontaleCellen` in de horizontale richting, en `aantalVerticaleCellen` in de verticale richting. Het daadwerkelijke aantal hangt af van hoeveel ruimte er op het scherm beschikbaar is. De waarde wordt dus berekend bij het opstarten van het spel. De linker bovenhoek van het speelveld is (`x = 0`, `y = 0`), en de rechter onderhoek is `(x = (aantalHorizontaleCellen + 1) * rasterGrootte`, `y = (aantalVerticaleCellen + 1) * rasterGrootte`). De variabele `rasterGrootte` is het aantal pixels dat een enkele cel (vierkant) van het veld bevat. Wij hebben `rasterGrootte` 16 pixels groot.
+
 ### Opdracht 2: Teken de appel
 
 In het spel Snake hebben we niet alleen een slang, maar ook een appel. De slang wil de appel opeten, maar dat kan hij alleen doen als hij de slang kan zien.
