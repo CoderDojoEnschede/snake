@@ -52,7 +52,7 @@ Zie je de slang verschijnen op het scherm?
 
 ### Opdracht 2: Teken de appel
 
-In het spel Snake hebben we niet alleen een slang, maar ook een appel. De slang wil de appel opeten, maar dat kan hij alleen doen als hij de slang kan zien.
+In het spel Snake hebben we niet alleen een slang, maar ook een appel. De slang wil de appel opeten, maar dat kan hij alleen doen als hij de appel kan zien.
 
 ▶▶▶ Zoek *Opdracht 2* in het bestand `snake.js`.
 
