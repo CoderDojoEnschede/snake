@@ -56,9 +56,9 @@ In het spel Snake hebben we niet alleen een slang, maar ook een appel. De slang 
 
 ▶▶▶ Zoek *Opdracht 2* in het bestand `snake.js`.
 
-De appel heet `appel` in de code. De appel heeft een locatie `x` (horizontaal) en `y` (verticaal), net als de stukjes van de slang.
+De appel heet `appel` in de code. De appel heeft een locatie `appel.x` (horizontaal) en `appel.y` (verticaal), net als de stukjes van de slang.
 
-▶▶▶ Teken een groen (`'green'`) vierkant op de locatie `x`, `y` van de appel, met grootte `rasterGrootte - 1`.
+▶▶▶ Teken een groen (`'green'`) vierkant op de locatie `appel.x`, `appel.y` van de appel, met grootte `rasterGrootte - 1`.
 
 Kijk naar de vorige opdracht als je er niet uit komt hoe je een vierkant kan tekenen.
 
@@ -96,13 +96,13 @@ De slang gaat door de muur, en verwijnt! Dat klopt niet.
 
 Deze code staat in `if (snake.x < 0)`, dus als de slang links van het scherm af valt. Dan moet de slang aan de rechterkant er weer uit komen.
 
-▶▶▶ Zet de `x` positie van de slang op `breedte - rasterGrootte`.
+▶▶▶ Zet de horizontale positie (`snake.x`) van de slang op `breedte - rasterGrootte`.
 
 ▶▶▶ Zoek *Opdracht 4b* in het bestand `snake.js`.
 
 Deze code staat in `if (snake.x >= breedte)`, dus als de slang rechts van het scherm af valt. Dan moet de slang aan de linkerkant er weer uit komen.
 
-▶▶▶ Zet de `x` positie van de slang op `0`.
+▶▶▶ Zet de horizontale positie (`snake.x`) positie van de slang op `0`.
 
 Nu moet de slang succesvol 'door de muur' heen glijden.
 
